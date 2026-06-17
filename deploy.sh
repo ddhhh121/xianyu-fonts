@@ -2,7 +2,7 @@
 chcp 65001 >nul
 echo.
 echo ========================================
-echo   一键部署到 GitHub + Gitee Pages
+echo   一键部署到 Gitee Pages
 echo ========================================
 echo.
 
@@ -10,7 +10,7 @@ cd /d "%~dp0"
 
 :: 重新生成 index.html（可选，如有改动取消注释）
 :: cd ..
-:: python build_page.py
+:: python force_build.py
 :: cp data\output\font\index.html deploy\index.html
 :: cd deploy
 
@@ -25,19 +25,10 @@ if %errorlevel%==0 (
     git commit -m "%msg%"
 )
 
-:: 同时推送到 GitHub 和 Gitee
+:: 推送到 Gitee
 echo.
-echo [1/2] 推送到 GitHub...
+echo 推送到 Gitee...
 git push origin main
-if %errorlevel%==0 (
-    echo [OK] GitHub: https://ddhhh121.github.io/xianyu-fonts/
-) else (
-    echo [FAIL] GitHub 推送失败
-)
-
-echo.
-echo [2/2] 推送到 Gitee...
-git push gitee main
 if %errorlevel%==0 (
     echo [OK] Gitee: https://dancing-shadows.gitee.io/xianyu-fonts/
 ) else (
@@ -47,8 +38,7 @@ if %errorlevel%==0 (
 echo.
 echo ========================================
 echo   部署完成！
-echo   GitHub: https://ddhhh121.github.io/xianyu-fonts/
-echo   Gitee:  https://dancing-shadows.gitee.io/xianyu-fonts/
+echo   Gitee: https://dancing-shadows.gitee.io/xianyu-fonts/
 echo ========================================
 echo.
 pause
