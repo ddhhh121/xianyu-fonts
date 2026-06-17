@@ -77,7 +77,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 <input type="text" id="search" placeholder="搜索字体名称、作者、风格、协议..." autocomplete="off">
 </div>
 </div>
-<div class="stats"><span id="resultCount">显示全部 1136 款</span><span>更新于 2026-06-18 01:13</span></div>
+<div class="stats"><span id="resultCount">显示全部 1136 款</span><span>更新于 2026-06-18 01:16</span></div>
 <div class="grid" id="grid">
 <a class="card" href="https://pan.quark.cn/s/5a19bec748c5" target="_blank" data-search="乐米惠体 黑体 夸克网盘 乐米字体 黑体 简中">
   <div class="card-idx">1</div>
@@ -22810,18 +22810,21 @@ const si=document.getElementById("search"),cards=document.querySelectorAll(".car
 si.addEventListener("input",()=>{const q=si.value.trim().toLowerCase();let n=0;cards.forEach(c=>{const m=!q||c.dataset.search.includes(q);c.classList.toggle("hidden",!m);if(m)n++});rc.textContent=q?`找到 ${n} 款`:`显示全部 ${total} 款`;nr.classList.toggle("show",n===0&&q.length>0)});
 
 document.addEventListener("DOMContentLoaded",function(){
-  document.querySelectorAll(".card-preview").forEach(function(el){
-    var card=el.closest(".card");
-    var name=card.querySelector(".card-name").textContent;
-    if(/宋|明朝|serif/i.test(name)){el.style.fontFamily='Georgia,"Songti SC","SimSun",serif';el.style.fontWeight="normal"}
-    else if(/楷|行书|草书|手写|瘦金|毛笔|手书/i.test(name)){el.style.fontFamily='"Kaiti SC","KaiTi","STKaiti",Georgia,serif';el.style.fontStyle="italic";el.style.fontWeight="normal"}
-    else if(/圆|萌|可爱|少女/i.test(name)){el.style.fontFamily='"Yuanti SC","YouYuan",sans-serif';el.style.fontWeight="normal"}
-    else{el.style.fontFamily='-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif';el.style.fontWeight="700"}
-  });
+  // 有直链的字体 → 真实预览；无直链的 → 隐藏预览行，保持页面干净
   if("IntersectionObserver" in window&&"FontFace" in window){
     var loaded={};
-    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;var u=el.dataset.fontUrl;if(!u||u==="")return;if(loaded[u])return;loaded[u]=true;var fid="p-"+Math.random().toString(36).substr(2,8);var face=new FontFace(fid,"url("+u+")");face.load().then(function(f){document.fonts.add(f);el.style.fontFamily='"'+fid+'",sans-serif'}).catch(function(){});obs.unobserve(el)})},{rootMargin:"300px"});
-    document.querySelectorAll(".card-preview").forEach(function(el){if(el.dataset.fontUrl)obs.observe(el)})
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;var u=el.dataset.fontUrl;if(!u||u==="")return;if(loaded[u])return;loaded[u]=true;var fid="p-"+Math.random().toString(36).substr(2,8);var face=new FontFace(fid,"url("+u+")");face.load().then(function(f){document.fonts.add(f);el.style.fontFamily='"'+fid+'",sans-serif'}).catch(function(){el.style.display="none"});obs.unobserve(el)})},{rootMargin:"300px"});
+    document.querySelectorAll(".card-preview").forEach(function(el){
+      var u=el.dataset.fontUrl;
+      if(u&&u.trim()!==""){
+        obs.observe(el);
+      }else{
+        el.remove();
+      }
+    });
+  }else{
+    // 不支持 FontFace 的浏览器，全部隐藏
+    document.querySelectorAll(".card-preview").forEach(function(el){el.remove()});
   }
 });
 </script>
