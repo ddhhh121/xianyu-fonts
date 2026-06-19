@@ -1,4 +1,4 @@
-window.fontData = [
+window.gufengFonts = [
   {
   "font_id": 1,
   "name": "iFonts周年体",
