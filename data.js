@@ -1,7 +1,7 @@
 // data.js — 古风字体数据（自动生成，请勿手动编辑）
 // 更新时间：2026-06-19 17:27
 // 字体数量：1081 款
-const gufengFonts = [
+window.gufengFonts = [
     {
         id: 1,
         name: "なぎの",
