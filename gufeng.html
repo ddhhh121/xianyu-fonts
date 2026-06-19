@@ -11,97 +11,396 @@
 <meta name="description" content="精选1043款免费商用古风字体，涵盖书法、楷书、行书、隶书、毛笔、仿宋、明朝、复古风格，适合国潮设计、古风视频、茶饮包装等场景。">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f5f5f7;color:#1d1d1f;min-height:100vh}
+
+/* 古风配色 */
+:root {
+  --ink-black: #2c2c2c;
+  --rice-paper: #f7f4ed;
+  --vermillion: #c23a2b;
+  --gold: #b8860b;
+  --jade: #2e8b57;
+  --cloud-white: #f0f0f0;
+  --bamboo-green: #6b8e23;
+  --plum-purple: #8b4513;
+}
+
+body{
+  font-family:"Noto Serif CJK SC","Source Han Serif SC","SimSun","Songti SC",serif;
+  background-color:var(--rice-paper);
+  color:var(--ink-black);
+  min-height:100vh;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(194,58,43,0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(184,134,11,0.03) 0%, transparent 50%);
+}
+
+/* 宣纸纹理背景 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect width='100' height='100' fill='none'/%3E%3Cpath d='M0 50 Q25 45 50 50 T100 50' stroke='%23000' stroke-width='0.1' fill='none' opacity='0.1'/%3E%3Cpath d='M0 30 Q25 25 50 30 T100 30' stroke='%23000' stroke-width='0.1' fill='none' opacity='0.05'/%3E%3Cpath d='M0 70 Q25 65 50 70 T100 70' stroke='%23000' stroke-width='0.1' fill='none' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -1;
+}
 
 /* 免责声明 */
-.disclaimer{background:linear-gradient(135deg,#ff6b6b 0%,#ee5a24 100%);color:#fff;padding:20px 24px;font-size:13px;line-height:1.8;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.15)}
-.disclaimer strong{font-size:15px;display:block;margin-bottom:6px}
+.disclaimer{
+  background:linear-gradient(135deg,var(--vermillion) 0%,#8b0000 100%);
+  color:var(--cloud-white);
+  padding:20px 24px;
+  font-size:13px;
+  line-height:1.8;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 2px 12px rgba(0,0,0,.3);
+  border-bottom:2px solid var(--gold);
+}
+.disclaimer strong{font-size:15px;display:block;margin-bottom:6px;letter-spacing:2px}
 .disclaimer ol{margin:8px 0 0 18px}
 .disclaimer ol li{margin-bottom:4px}
-.disclaimer a{color:#ffe0b2;text-decoration:underline}
+.disclaimer a{color:var(--gold);text-decoration:underline}
 
-/* 头部 */
-.header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:48px 24px 36px;text-align:center}
-.header h1{font-size:32px;font-weight:700;margin-bottom:8px;letter-spacing:2px}
-.header p{font-size:15px;opacity:.85;margin-bottom:24px;letter-spacing:1px}
-.header .count{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;padding:6px 18px;font-size:14px;margin-bottom:24px}
+/* 古风头部 */
+.header{
+  background:linear-gradient(180deg,#2c2c2c 0%,#3d2b1f 60%,#5c3a21 100%);
+  color:var(--cloud-white);
+  padding:60px 24px 50px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  border-bottom:3px solid var(--gold);
+}
 
-/* 搜索 */
-.search-wrap{max-width:480px;margin:0 auto;position:relative}
-.search-wrap svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);opacity:.5}
-#search{width:100%;padding:14px 16px 14px 44px;border:none;border-radius:12px;font-size:15px;background:rgba(255,255,255,.95);color:#1d1d1f;outline:none;box-shadow:0 4px 20px rgba(0,0,0,.1)}
-#search:focus{box-shadow:0 4px 24px rgba(102,126,234,.35)}
+/* 古风装饰 */
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.header h1{
+  font-size:42px;
+  font-weight:700;
+  letter-spacing:12px;
+  margin-bottom:16px;
+  text-shadow:0 3px 10px rgba(0,0,0,.4);
+  font-family:"KaiTi","STKaiti","Noto Serif CJK SC",serif;
+}
+
+.header p{
+  font-size:16px;
+  opacity:.8;
+  letter-spacing:4px;
+  margin-bottom:30px;
+  font-style:italic;
+}
+
+.header .count{
+  display:inline-block;
+  background:rgba(194,58,43,.6);
+  border:1px solid var(--gold);
+  border-radius:2px;
+  padding:8px 24px;
+  font-size:15px;
+  margin-bottom:30px;
+  letter-spacing:3px;
+}
+
+/* 古风搜索框 */
+.search-wrap{max-width:500px;margin:0 auto;position:relative}
+.search-wrap svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);opacity:.4}
+#search{
+  width:100%;
+  padding:16px 18px 16px 48px;
+  border:1px solid #d4c5a9;
+  border-radius:2px;
+  font-size:15px;
+  background:rgba(247,244,237,.95);
+  color:var(--ink-black);
+  outline:none;
+  font-family:inherit;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+  transition:all .3s;
+}
+#search:focus{
+  border-color:var(--vermillion);
+  box-shadow:0 2px 12px rgba(194,58,43,.15);
+}
+#search::placeholder{color:#b8a88a}
 
 /* 统计 */
-.stats{max-width:960px;margin:20px auto 0;padding:0 20px;display:flex;justify-content:space-between;font-size:13px;color:#86868b}
+.stats{
+  max-width:1000px;
+  margin:24px auto 0;
+  padding:0 20px;
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  color:#8a7e6b;
+}
 
-/* 筛选栏 */
-.filter-bar{max-width:960px;margin:12px auto 0;padding:0 20px;display:flex;flex-wrap:wrap;gap:8px}
-.fbtn{border:none;background:#fff;color:#555;font-size:13px;padding:6px 14px;border-radius:20px;cursor:pointer;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.06);font-weight:500}
-.fbtn:hover{background:#667eea;color:#fff;box-shadow:0 2px 8px rgba(102,126,234,.3)}
-.fbtn.active{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;box-shadow:0 2px 8px rgba(102,126,234,.4)}
+/* 古风筛选栏 */
+.filter-bar{
+  max-width:1000px;
+  margin:16px auto 0;
+  padding:0 20px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.fbtn{
+  border:1px solid #d4c5a9;
+  background:transparent;
+  color:#5c4a3a;
+  font-size:13px;
+  padding:8px 18px;
+  border-radius:2px;
+  cursor:pointer;
+  transition:all .2s;
+  font-family:inherit;
+  font-weight:500;
+  letter-spacing:1px;
+}
+.fbtn:hover{
+  background:var(--vermillion);
+  color:var(--cloud-white);
+  border-color:var(--vermillion);
+}
+.fbtn.active{
+  background:var(--vermillion);
+  color:var(--cloud-white);
+  border-color:var(--vermillion);
+}
 
 /* 卡片网格 */
-.grid{max-width:960px;margin:12px auto 40px;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.grid{
+  max-width:1100px;
+  margin:20px auto 40px;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:16px;
+}
 
-/* 字体卡片 */
-.card{display:flex;align-items:flex-start;gap:14px;background:#fff;border-radius:14px;padding:16px 18px;text-decoration:none;color:inherit;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.04)}
-.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(102,126,234,.15);border-color:rgba(102,126,234,.2)}
+/* 古风卡片 */
+.card{
+  background:var(--cloud-white);
+  border:1px solid #e3dec3;
+  border-radius:4px;
+  overflow:hidden;
+  transition:all .4s cubic-bezier(.16,1,.3,1);
+  position:relative;
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  padding:18px 20px;
+  text-decoration:none;
+  color:inherit;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 32px rgba(194,58,43,.1);
+  border-color:var(--vermillion);
+}
 .card.hidden{display:none}
-.card-idx{flex-shrink:0;width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;margin-top:2px}
+
+/* 卡片序号 */
+.card-idx{
+  flex-shrink:0;
+  width:40px;
+  height:40px;
+  border-radius:2px;
+  background:linear-gradient(135deg,var(--vermillion) 0%,#8b0000 100%);
+  color:var(--gold);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  font-weight:600;
+  margin-top:2px;
+  border:1px solid var(--gold);
+  font-family:"KaiTi","STKaiti",serif;
+}
+
+/* 卡片内容 */
 .card-body{flex:1;min-width:0}
-.card-name{font-size:16px;font-weight:600;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-name{
+  font-size:18px;
+  font-weight:600;
+  line-height:1.4;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:var(--ink-black);
+  font-family:"KaiTi","STKaiti","Noto Serif CJK SC",serif;
+}
 
 /* 预览图 */
-.card-preview-img{width:100%;height:120px;margin-top:8px;border-radius:8px;overflow:hidden;background:#f8f8f8}
-.card-preview-img img{width:100%;height:100%;object-fit:cover}
+.card-preview-img{
+  width:100%;
+  height:120px;
+  margin-top:10px;
+  border-radius:2px;
+  overflow:hidden;
+  background:#f8f8f8;
+  border:1px solid #e3dec3;
+}
+.card-preview-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
 /* 文字预览 */
-.card-preview{font-size:15px;color:#555;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:4px 0;border-top:1px dashed #eee}
+.card-preview{
+  font-size:16px;
+  color:#5c4a3a;
+  margin-top:8px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  padding:8px 0;
+  border-top:1px dashed #d4c5a9;
+  font-style:italic;
+}
 .font-sans{font-family:"PingFang SC","Noto Sans CJK SC","Source Han Sans SC","Microsoft YaHei",sans-serif;font-weight:700}
 .font-serif{font-family:"Songti SC","Noto Serif CJK SC","Source Han Serif SC","SimSun",Georgia,serif}
 .font-kaiti{font-family:"Kaiti SC","STKaiti","Noto Serif CJK SC","KaiTi",Georgia,serif;font-style:italic}
 .font-yuanti{font-family:"Yuanti SC","STYuanti",sans-serif}
 
 /* 标签 */
-.card-meta-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
-.stag{background:#e8f4fd;color:#1a73e8;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:500}
-.ltag{background:#f0fdf4;color:#16a34a;font-size:10px;padding:1px 6px;border-radius:4px}
+.card-meta-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.stag{
+  background:rgba(194,58,43,.1);
+  color:var(--vermillion);
+  font-size:11px;
+  padding:2px 8px;
+  border-radius:2px;
+  font-weight:500;
+  border:1px solid rgba(194,58,43,.2);
+}
+.ltag{
+  background:rgba(46,139,87,.1);
+  color:var(--jade);
+  font-size:11px;
+  padding:2px 8px;
+  border-radius:2px;
+  border:1px solid rgba(46,139,87,.2);
+}
 
 /* 信息 */
-.card-info{display:flex;gap:12px;margin-top:6px;font-size:11px;color:#86868b}
+.card-info{
+  display:flex;
+  gap:14px;
+  margin-top:10px;
+  font-size:12px;
+  color:#8a7e6b;
+}
 .info-author{white-space:nowrap}
 .info-license{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* 侧边 */
-.card-side{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;margin-top:2px}
-.tag{background:#f0f0f5;color:#667eea;font-size:11px;padding:2px 8px;border-radius:6px;font-weight:500}
-.ltype{font-size:10px;color:#999;background:#f8f8f8;padding:1px 6px;border-radius:4px}
-.card-arrow{flex-shrink:0;font-size:18px;color:#ccc;transition:all .2s;margin-top:8px}
-.card:hover .card-arrow{color:#667eea;transform:translateX(3px)}
+.card-side{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:6px;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.tag{
+  background:rgba(184,134,11,.1);
+  color:var(--gold);
+  font-size:11px;
+  padding:3px 10px;
+  border-radius:2px;
+  font-weight:500;
+  border:1px solid rgba(184,134,11,.3);
+  font-family:"KaiTi","STKaiti",serif;
+}
+.ltype{
+  font-size:10px;
+  color:#8a7e6b;
+  background:rgba(247,244,237,.5);
+  padding:2px 8px;
+  border-radius:2px;
+  border:1px solid #d4c5a9;
+}
+.card-arrow{
+  flex-shrink:0;
+  font-size:20px;
+  color:#d4c5a9;
+  transition:all .2s;
+  margin-top:10px;
+}
+.card:hover .card-arrow{
+  color:var(--vermillion);
+  transform:translateX(3px);
+}
+
+/* 古风装饰元素 */
+.decoration {
+  position: absolute;
+  opacity: 0.1;
+  pointer-events: none;
+}
 
 /* 底部 */
-.footer{text-align:center;padding:24px;font-size:12px;color:#999}
-.footer a{color:#667eea;text-decoration:none}
+.footer{
+  text-align:center;
+  padding:30px;
+  font-size:13px;
+  color:#8a7e6b;
+  border-top:1px solid #d4c5a9;
+  background:rgba(247,244,237,.5);
+  font-style:italic;
+}
+.footer a{
+  color:var(--vermillion);
+  text-decoration:none;
+  border-bottom:1px solid var(--vermillion);
+}
 
 /* 无结果 */
-.no-result{grid-column:1/-1;text-align:center;padding:60px 20px;color:#999;font-size:15px;display:none}
+.no-result{
+  grid-column:1/-1;
+  text-align:center;
+  padding:80px 20px;
+  color:#8a7e6b;
+  font-size:16px;
+  display:none;
+  font-style:italic;
+}
 .no-result.show{display:block}
 
 /* 响应式 */
 @media(max-width:640px){
-  .header{padding:36px 16px 28px}
-  .header h1{font-size:22px}
+  .header{padding:40px 16px 30px}
+  .header h1{font-size:28px;letter-spacing:6px}
   .grid{padding:0 12px;grid-template-columns:1fr}
   .card{padding:14px}
   .disclaimer{font-size:12px;padding:14px 16px}
   .card-preview-img{height:80px}
+  .filter-bar{gap:6px}
+  .fbtn{padding:6px 12px;font-size:12px}
 }
 </style>
 </head>
 <body>
 <div class="disclaimer">
-<strong>⚠️ 版权与免责声明</strong>
+<strong>⚠ 版权与免责声明</strong>
 <ol>
 <li>本站所有字体资源均自动搜集自互联网开源渠道，全站资源均基于 SIL OFL 或同等开源商业许可协议。</li>
 <li>部分下载通道由第三方网盘提供，本站不持有任何字体的版权，亦不对第三方网盘文件内容的变更承担连带责任。</li>
@@ -109,11 +408,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 </ol>
 </div>
 <div class="header">
-<h1>古风字体合集</h1>
+<h1>古 风 字 体 合 集</h1>
 <p>书法 · 楷书 · 行书 · 隶书 · 篆书 · 毛笔 · 仿宋 · 明朝 · 复古</p>
 <div class="count">共 1043 款 · 全部免费商用</div>
 <div class="search-wrap">
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a7e6b" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
 <input type="text" id="search" placeholder="搜索字体名称、作者、风格..." autocomplete="off">
 </div>
 </div>
